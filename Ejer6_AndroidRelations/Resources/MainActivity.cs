@@ -18,7 +18,7 @@ namespace Ejer6_AndroidRelations.Resources
     {
         private Button _buttonChangeName;
         private EditText _textChangeName;
-
+        private Button _btCodigoSeguridad;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -31,15 +31,21 @@ namespace Ejer6_AndroidRelations.Resources
         {
             _buttonChangeName = FindViewById<Button>(Resource.Id.buttonChangeName);
             _textChangeName = FindViewById<EditText>(Resource.Id.textChangeName);
-
+            _btCodigoSeguridad = FindViewById<Button>(Resource.Id.btCodigoSeguridad);
 
             _buttonChangeName.Click += ChangeNameClick;
+            _btCodigoSeguridad.Click += NavigateCodigoSeguridad;
         }
 
-        async void ChangeNameClick(object sender, EventArgs e)
+        private void ChangeNameClick(object sender, EventArgs e)
         {
-            //await DisplayAlert("Ha Escrito...", _textChangeName, "OK");
             Toast.MakeText(this, "Ha Escrito..." + _textChangeName.Text, ToastLength.Long).Show();
+        }
+
+        private void NavigateCodigoSeguridad(object sender, EventArgs e)
+        {
+            Intent navigateIntent = new Intent(this, typeof(CodigoSeguridad));
+            StartActivity(navigateIntent);
         }
     }
 }
