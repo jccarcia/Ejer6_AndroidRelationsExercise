@@ -19,7 +19,7 @@ namespace Ejer6_AndroidRelations.Resources
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.content_main);
+            SetContentView(Resource.Layout.datosPersona);
 
             AddBindForLayout();
         }
