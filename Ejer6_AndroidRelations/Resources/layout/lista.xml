@@ -1,0 +1,28 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <TextView
+            android:text="id"
+            android:layout_width="200px"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvId" />
+        <TextView
+            android:text="nombre"
+            android:layout_width="200px"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvNombre" />
+        <TextView
+            android:text="apellido"
+            android:layout_width="200px"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvApellido" />
+        <TextView
+            android:text="sexo"
+            android:layout_width="200px"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvSexo" />
+
+</LinearLayout>

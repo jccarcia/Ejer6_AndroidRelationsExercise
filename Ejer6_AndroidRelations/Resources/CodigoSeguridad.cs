@@ -27,7 +27,6 @@ namespace Ejer6_AndroidRelations.Resources
         private Button _bt0;
         private Button _btComprobar;
         private TextView _textViewPass;
-        private bool acceso = false;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -40,14 +39,14 @@ namespace Ejer6_AndroidRelations.Resources
         private void AddBindForLayout()
         {
             _bt1 = FindViewById<Button>(Resource.Id.bt1);
-            _bt2 = FindViewById<Button>(Resource.Id.bt1);
-            _bt3 = FindViewById<Button>(Resource.Id.bt1);
-            _bt4 = FindViewById<Button>(Resource.Id.bt1);
-            _bt5 = FindViewById<Button>(Resource.Id.bt1);
-            _bt6 = FindViewById<Button>(Resource.Id.bt1);
-            _bt7 = FindViewById<Button>(Resource.Id.bt1);
-            _bt8 = FindViewById<Button>(Resource.Id.bt1);
-            _bt9 = FindViewById<Button>(Resource.Id.bt1);
+            _bt2 = FindViewById<Button>(Resource.Id.bt2);
+            _bt3 = FindViewById<Button>(Resource.Id.bt3);
+            _bt4 = FindViewById<Button>(Resource.Id.bt4);
+            _bt5 = FindViewById<Button>(Resource.Id.bt5);
+            _bt6 = FindViewById<Button>(Resource.Id.bt6);
+            _bt7 = FindViewById<Button>(Resource.Id.bt7);
+            _bt8 = FindViewById<Button>(Resource.Id.bt8);
+            _bt9 = FindViewById<Button>(Resource.Id.bt9);
             _bt0 = FindViewById<Button>(Resource.Id.bt0);
             _btComprobar = FindViewById<Button>(Resource.Id.btComprobar);
             _textViewPass = FindViewById<TextView>(Resource.Id.textViewPass);
@@ -62,6 +61,21 @@ namespace Ejer6_AndroidRelations.Resources
             _bt8.Click += buttonNumber8;
             _bt9.Click += buttonNumber9;
             _bt0.Click += buttonNumber0;
+            _btComprobar.Click += comprobarCodigo;
+        }
+
+        private void comprobarCodigo(object sender, EventArgs e)
+        {
+            if (_textViewPass.Text == "1234")
+            {
+                Intent navigateIntent = new Intent(this, typeof(ListaPersonaActivity));
+                StartActivity(navigateIntent);
+                Saveset();
+            }
+            else
+            {
+                Toast.MakeText(this, "Ha Escrito el codigo mal", ToastLength.Long).Show();
+            }
         }
 
         private void buttonNumber1(object sender, EventArgs e)
@@ -114,27 +128,14 @@ namespace Ejer6_AndroidRelations.Resources
             _textViewPass.Text += _bt0.Text;
         }
 
-        private void comprobarCodigo(object sender, EventArgs e)
+        protected void Saveset()
         {
-            if (acceso == false)
-            {
-                if (_textViewPass.Text == "1234")
-                {
-                    Intent navigateIntent = new Intent(this, typeof(DatosPersonaActivity));
-                    StartActivity(navigateIntent);
-                    acceso = true;
-                }
-                else
-                {
-                    Toast.MakeText(this, "Ha Escrito el codigo mal", ToastLength.Long).Show();
-                }
-            }
-            else
-            {
-                Intent navigateIntent = new Intent(this, typeof(DatosPersonaActivity));
-                StartActivity(navigateIntent);
-            }
-            
+            //store
+            var prefs = Application.Context.GetSharedPreferences("Archivo", FileCreationMode.Private);
+            var prefEditor = prefs.Edit();
+            prefEditor.PutString("cadena", "iniciado");
+            prefEditor.Commit();
         }
+
     }
 }
